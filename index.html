@@ -45,15 +45,34 @@
        PROJECTS SECTION
        Do not change the id="project-grid" — src/projects.js targets it.
        ============================================================ -->
-  <section id="projects">
-    <div class="section-header">
-      <h2>My Projects</h2>
-      <p class="section-desc">Everything I've built, rendered from src/projects.js.</p>
+<section id="projects">
+  <div class="section-header">
+    <h2>My Projects</h2>
+    <p class="section-desc">Everything I've built, rendered from src/projects.js.</p>
+  </div>
+
+  <div class="project-controls">
+    <div class="filter-buttons" aria-label="Filter projects by technology">
+      <button class="filter-btn active" type="button" data-filter="all">All</button>
+      <button class="filter-btn" type="button" data-filter="html">HTML</button>
+      <button class="filter-btn" type="button" data-filter="css">CSS</button>
+      <button class="filter-btn" type="button" data-filter="javascript">JavaScript</button>
     </div>
-    <div class="grid" id="project-grid">
-      <!-- Cards are inserted here by renderProjects() in src/projects.js -->
-    </div>
-  </section>
+
+    <label class="search-label" for="project-search">Search projects</label>
+    <input
+      id="project-search"
+      class="project-search"
+      type="search"
+      placeholder="Search by title, tech, or description..."
+    >
+  </div>
+
+  <div class="grid" id="project-grid">
+    <!-- Cards are inserted here by renderProjects() in src/projects.js -->
+  </div>
+</section>
+   
 
   <!-- ============================================================
        GITHUB REPOS SECTION (from Week 7)

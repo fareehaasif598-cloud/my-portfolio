@@ -22,7 +22,21 @@ import { fetchRepos, repoCard } from './api.js';
 // TODO — import from './projects.js' and './api.js'
 
 
-const USERNAME = 'fareehaasif598-cloud'; // ← change this!
+const USERNAME = 'fareehaasif598-cloud'; 
+let activeFilter = 'all';
+let searchTerm = '';
+function getFilteredProjects() {
+  return projects.filter((project) => {
+    const matchesFilter = activeFilter === 'all' || project.tech === activeFilter;
+
+    const matchesSearch =
+      project.title.toLowerCase().includes(searchTerm) ||
+      project.tech.toLowerCase().includes(searchTerm) ||
+      project.desc.toLowerCase().includes(searchTerm);
+
+    return matchesFilter && matchesSearch;
+  });
+}
 
 
 /* =============================================================
@@ -58,6 +72,28 @@ async function initRepos() {
 
 
 document.addEventListener('DOMContentLoaded', () => {
+   const filterButtons = document.querySelectorAll('.filter-btn');
+   const searchInput = document.getElementById('project-search');
+
    renderProjects(projects);
    initRepos();
+
+   filterButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+         activeFilter = button.dataset.filter;
+
+         filterButtons.forEach((btn) => {
+            btn.classList.remove('active');
+         });
+
+         button.classList.add('active');
+
+         renderProjects(getFilteredProjects());
+      });
+   });
+
+   searchInput.addEventListener('input', () => {
+      searchTerm = searchInput.value.toLowerCase().trim();
+      renderProjects(getFilteredProjects());
+   });
 });
