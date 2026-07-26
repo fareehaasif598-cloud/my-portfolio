@@ -33,13 +33,32 @@ export const projects = [
     desc: 'A styled version of my profile page using custom fonts, colors, spacing, borders, shadows, and hover effects.'
   },
   {
+    title: 'Responsive Portfolio',
+    tech: 'css',
+    week: 4,
+    desc: 'A responsive portfolio update using media queries, flexible layouts, and mobile-friendly styling.'
+  },
+  {
     title: 'Interactive Quiz App',
     tech: 'javascript',
     week: 5,
     desc: 'An interactive quiz app using JavaScript functions, arrays, DOM updates, click events, scoring, and a results screen.'
+  },
+  {
+    title: 'Interactive Portfolio',
+    tech: 'javascript',
+    week: 6,
+    desc: 'A portfolio project with dynamic project cards, JavaScript rendering, filtering, and live search.'
+  },
+  {
+    title: 'GitHub API Portfolio',
+    tech: 'javascript',
+    week: 7,
+    desc: 'A portfolio update that fetches live GitHub repositories from the GitHub API and displays them on the page.'
   }
-  // TIP: add more objects here as you build more projects!
 ];
+  // TIP: add more objects here as you build more projects!
+
 
 
 /* =============================================================
