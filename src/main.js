@@ -57,14 +57,25 @@ async function initRepos() {
       repoGrid.innerHTML = repos.map(repoCard).join('');
 
    }
-   catch (error) {
-      repoGrid.innerHTML = `
+ catch (error) {
+   repoGrid.innerHTML = `
       <div class="error-state">
          <p>⚠️</p>
          <p>Error: ${error.message}</p>
-       </div>
-       `;
-   }
+         <button class="retry-btn" type="button" id="retry-repos">Try Again</button>
+      </div>
+   `;
+
+   const retryButton = document.getElementById('retry-repos');
+
+   retryButton.addEventListener('click', () => {
+      repoGrid.innerHTML = `
+         <div class="loading-state" id="loading-indicator">Loading repositories…</div>
+      `;
+
+      initRepos();
+   });
+}
    finally {
       loadingIndicator.classList.add('hidden');
    }
